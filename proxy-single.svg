@@ -1,15 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:hidden">
 <foreignObject id="fo" x="0" y="0" width="100%" height="100%">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-  <title>Scramjet</title>
+  <title>Sx browser</title>
   <style>
     body {
-      font-family: "Comic Sans MS", "Comic Neue", cursive;
+      font-family: "Segoe UI", system-ui, sans-serif;
       margin: 0;
-      background: #111;
+      background: radial-gradient(1200px 600px at 50% -10%, #3a1d6e 0%, #14081f 45%, #0b0612 100%);
+      color: #f3e9ff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -34,7 +35,7 @@
       height: 100vh;
       flex-direction: column;
       z-index: 9999;
-      background-color: #111;
+      background-color: #0b0612;
     }
     #sj-frame-url {
       position: absolute;
@@ -58,7 +59,7 @@
       flex: 1;
       width: 100%;
       height: 100%;
-      background-color: #111;
+      background-color: #0b0612;
     }
     #sj-error { color: #ff6666; white-space: pre-wrap; }
     #sj-error-code {
@@ -66,7 +67,26 @@
       color: #fff;
       font-family: "Courier New", Courier, monospace;
     }
-    .logo-wrapper h1 { color: white; }
+    .logo-wrapper h1 {
+      color: #fff;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0;
+      text-shadow: 0 0 24px rgba(168, 85, 247, 0.7);
+    }
+    .logo-wrapper .mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #c084fc, #7c3aed 55%, #4c1d95);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.45);
+      margin-bottom: 10px;
+    }
     footer {
       margin: 0 5vw;
       margin-top: auto;
@@ -94,27 +114,28 @@
     .desc p {
       width: 560px;
       max-width: 90vw;
-      color: rgba(253, 253, 253, 0.514);
+      color: rgba(243, 233, 255, 0.62);
       text-align: center;
     }
     #sj-address, #username, #wisp-select, #custom-wisp {
-      background: none;
       font-family: inherit;
       padding: 0px 17px;
       height: 48px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(192, 132, 252, 0.35);
       border-radius: 50px;
       color: #fff;
       outline: none;
       width: 350px;
       max-width: 90vw;
       margin-top: 5px;
-      transition: border-radius 0.1s;
+      transition: border-radius 0.1s, border-color 0.15s, box-shadow 0.15s;
       box-sizing: border-box;
+      background: rgba(40, 16, 72, 0.55);
     }
     #sj-address:focus, #username:focus, #wisp-select:focus, #custom-wisp:focus {
-      border: 1px solid rgba(253, 253, 253, 0.514);
+      border: 1px solid #c084fc;
       border-radius: 6px;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
     }
     #wisp-select {
       appearance: none;
@@ -125,33 +146,34 @@
       background-position: right 16px center;
       padding-right: 40px;
     }
-    #wisp-select option, #wisp-select optgroup { background: #222; color: #fff; }
+    #wisp-select option, #wisp-select optgroup { background: #1a0b2e; color: #fff; }
     #custom-wisp { display: none; }
     button[type="submit"], #open-new-tab {
       margin-top: 8px;
       padding: 10px 24px;
-      background: #555;
+      background: linear-gradient(180deg, #a855f7, #6d28d9);
       color: #fff;
       border: none;
       border-radius: 50px;
       cursor: pointer;
       font-family: inherit;
       font-size: 15px;
+      box-shadow: 0 8px 20px rgba(109, 40, 217, 0.35);
     }
-    button[type="submit"]:hover, #open-new-tab:hover { background: #444; }
-    button[type="submit"]:active, #open-new-tab:active { background: #333; }
+    button[type="submit"]:hover, #open-new-tab:hover { background: linear-gradient(180deg, #c084fc, #7c3aed); }
+    button[type="submit"]:active, #open-new-tab:active { background: #5b21b6; }
   </style>
 </head>
 <body>
 
   <div class="flex-center logo-wrapper header-center">
-    <h1>Scramjet | MW</h1>
+    <div class="mark">Sx</div>
+    <h1>Sx browser</h1>
   </div>
 
   <div class="flex-center desc left-margin">
     <p>
-      Scramjet is an experimental interception based web proxy designed to
-      bypass arbitrary web browser restrictions and innovate web proxy technologies.
+      Sx browser runs Scramjet, an interception proxy that loads sites through the Wisp server you pick.
     </p>
   </div>
 
@@ -179,7 +201,7 @@
       <a href="https://github.com/MercuryWorkshop/Scramjet-Demo">GitHub</a>
     </div>
     <div>
-      <span>Scramjet &#169; MW 2025</span>
+      <span>Sx browser</span>
     </div>
   </footer>
 
@@ -191,7 +213,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@mercuryworkshop/scramjet@2.0.67-alpha.1/dist/scramjet.js"></script>
   <script src="https://unpkg.com/@mercuryworkshop/scramjet-controller@0.0.13/dist/controller.api.js"></script>
   <script src="https://unpkg.com/@mercuryworkshop/libcurl-transport@2.0.5/dist/index.js"></script>
-  <script>
+  <script>//<![CDATA[
     "use strict";
 
     const BASE_PATH = location.pathname.replace(/\/[^\/]*$/, "/");
@@ -414,7 +436,7 @@
         .then(() => navigate(goto))
         .catch((err) => showErrorScreen(err.message, err.stack));
     }
-  </script>
+  //]]></script>
 </body>
 </html>
 
