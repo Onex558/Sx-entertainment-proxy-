@@ -228,23 +228,28 @@
     const swAllowedHostnames = ["localhost", "127.0.0.1"];
 
     const WISPS = [
-      { id: "zaka-cf", name: "Zaka (CloudFront)", url: "wss://d1vajlb5xnngpm.cloudfront.net/api/", group: "Zaka" },
-      { id: "mercury", name: "Mercury Workshop", url: "wss://wisp.mercurywork.shop/", group: "Community" },
-      { id: "space", name: "Go Into Space", url: "wss://gointospace.app/wisp/", group: "Community" },
-      { id: "anura", name: "Anura", url: "wss://anura.pro/", group: "Community" },
-      { id: "tomp", name: "TOMP Bare", url: "wss://bare-server.fly.dev/wisp/", group: "Community" },
-      { id: "pgis-main", name: "PGIS Main", url: "wss://pgis-wisp.joytree.site/", group: "PGIS" },
-      { id: "pgis-1", name: "PGIS Frankfurt", url: "wss://pgis-wisp.onrender.com/", group: "PGIS" },
-      { id: "pgis-2", name: "PGIS Ohio", url: "wss://pgis-wisp-2.onrender.com/", group: "PGIS" },
-      { id: "pgis-3", name: "PGIS Singapore", url: "wss://pgis-wisp-3.onrender.com/", group: "PGIS" },
-      { id: "pgis-4", name: "PGIS Oregon", url: "wss://pgis-wisp-4.onrender.com/", group: "PGIS" },
-      { id: "petezah", name: "PeteZah", url: "wss://petezahgames.com/wisp/", group: "PeteZah" },
-      { id: "petezah-2", name: "PeteZah 2", url: "wss://3658729.ritebooks.com/wisp/", group: "PeteZah" },
-      { id: "petezah-3", name: "PeteZah 3", url: "wss://sciencepark.cc/wisp/", group: "PeteZah" },
-      { id: "petezah-4", name: "PeteZah 4", url: "wss://homeworkhelp.cc/wisp/", group: "PeteZah" },
-      { id: "bestspark", name: "bestspark.org", url: "wss://bestspark.org/wisp/", group: "Local" },
+      { id: "bestspark", name: "bestspark.org", url: "wss://bestspark.org/wisp/", group: "Checked up" },
+      { id: "mercury", name: "Mercury Workshop", url: "wss://wisp.mercurywork.shop/", group: "Checked up" },
+      { id: "mercury-wisp", name: "Mercury /wisp/", url: "wss://wisp.mercurywork.shop/wisp/", group: "Checked up" },
+      { id: "anura", name: "Anura /wisp/", url: "wss://anura.pro/wisp/", group: "Checked up" },
+      { id: "anura-root", name: "Anura root", url: "wss://anura.pro/", group: "Checked up" },
+      { id: "space", name: "Go Into Space", url: "wss://gointospace.app/wisp/", group: "Checked up" },
+      { id: "q13x", name: "q13x", url: "wss://wisp.q13x.com/", group: "Checked up" },
+      { id: "terbium", name: "Terbium", url: "wss://terbiumon.top/wisp/", group: "Checked up" },
+      { id: "phantom", name: "Phantom", url: "wss://phantom.lol/wisp/", group: "Checked up" },
+      { id: "truffled", name: "Truffled", url: "wss://truffled.lol/wisp/", group: "Checked up" },
+      { id: "petezah", name: "PeteZah", url: "wss://petezahgames.com/wisp/", group: "Checked up" },
+      { id: "petezah-2", name: "PeteZah ritebooks", url: "wss://3658729.ritebooks.com/wisp/", group: "Checked up" },
+      { id: "petezah-3", name: "Science Park", url: "wss://sciencepark.cc/wisp/", group: "Checked up" },
+      { id: "petezah-4", name: "Homework Help", url: "wss://homeworkhelp.cc/wisp/", group: "Checked up" },
+      { id: "pgis-main", name: "PGIS Main", url: "wss://pgis-wisp.joytree.site/", group: "Checked up" },
+      { id: "tomp", name: "TOMP Bare", url: "wss://bare-server.fly.dev/wisp/", group: "Checked up" },
+      { id: "pgis-1", name: "PGIS Frankfurt", url: "wss://pgis-wisp.onrender.com/", group: "Extra" },
+      { id: "pgis-2", name: "PGIS Ohio", url: "wss://pgis-wisp-2.onrender.com/", group: "Extra" },
+      { id: "pgis-3", name: "PGIS Singapore", url: "wss://pgis-wisp-3.onrender.com/", group: "Extra" },
+      { id: "pgis-4", name: "PGIS Oregon", url: "wss://pgis-wisp-4.onrender.com/", group: "Extra" },
       { id: "local", name: "Same-origin /wisp/", url: (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/wisp/", group: "Local" },
-      { id: "custom", name: "Custom (enter in Settings)", url: "", group: "Custom" }
+      { id: "custom", name: "Custom", url: "", group: "Custom" }
     ];
 
     const wispSelect = document.getElementById("wisp-select");
