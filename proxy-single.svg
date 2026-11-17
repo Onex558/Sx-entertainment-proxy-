@@ -162,6 +162,13 @@
     }
     button[type="submit"]:hover, #open-new-tab:hover { background: linear-gradient(180deg, #c084fc, #7c3aed); }
     button[type="submit"]:active, #open-new-tab:active { background: #5b21b6; }
+    #wisp-status {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #d8b4fe;
+      text-align: center;
+      min-height: 18px;
+    }
   </style>
 </head>
 <body>
@@ -181,6 +188,7 @@
     <input id="sj-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
     <input id="username" type="text" placeholder="Enter Username... (required!)" aria-label="Used for tracking purposes." />
     <select id="wisp-select" aria-label="Select Wisp server"></select>
+    <p id="wisp-status">Looking for a working Wisp...</p>
     <input id="custom-wisp" type="text" placeholder="wss://your-server/wisp/" spellcheck="false" autocomplete="off" />
     <input id="sj-address" type="text" placeholder="Search or enter URL" />
     <button type="submit">Open Here</button>
@@ -275,6 +283,49 @@
       localStorage.setItem("sj-wisp-custom", customWisp.value.trim());
     });
 
+    function probeWisp(url) {
+      return new Promise((resolve) => {
+        let done = false;
+        let ws;
+        const finish = (ok) => {
+          if (done) return;
+          done = true;
+          try { ws.close(); } catch (e) {}
+          resolve(ok);
+        };
+        try {
+          ws = new WebSocket(url);
+        } catch (e) {
+          resolve(false);
+          return;
+        }
+        const timer = setTimeout(() => finish(false), 4000);
+        ws.onopen = () => { clearTimeout(timer); finish(true); };
+        ws.onerror = () => { clearTimeout(timer); finish(false); };
+        ws.onclose = () => { clearTimeout(timer); finish(false); };
+      });
+    }
+
+    async function findWorkingWisp() {
+      const status = document.getElementById("wisp-status");
+      const candidates = WISPS.filter((w) => w.id !== "custom" && w.url);
+      for (let i = 0; i < candidates.length; i++) {
+        const w = candidates[i];
+        wispSelect.value = w.id;
+        if (status) status.textContent = "Trying " + (i + 1) + "/" + candidates.length + " — " + w.name;
+        const ok = await probeWisp(w.url);
+        const opt = wispSelect.querySelector('option[value="' + w.id + '"]');
+        if (opt) opt.textContent = w.name + (ok ? " (up)" : " (down)");
+        if (ok) {
+          localStorage.setItem("sj-wisp-id", w.id);
+          if (status) status.textContent = "Using " + w.name;
+          return w.url;
+        }
+      }
+      if (status) status.textContent = "No Wisp connected. Pick Custom or try again.";
+      return null;
+    }
+
     function getSelectedWisp() {
       const entry = WISPS.find((w) => w.id === wispSelect.value);
       if (!entry) return null;
@@ -349,11 +400,11 @@
     let controller = null;
     let frame = null;
 
-    async function initController() {
+    async function initController(forcedUrl) {
       controller = null;
       frame = null;
 
-      const wispUrl = getSelectedWisp();
+      const wispUrl = forcedUrl || getSelectedWisp();
       if (!wispUrl) throw new Error("No Wisp server selected");
 
       const { Controller, config } = window.$scramjetController;
@@ -379,7 +430,20 @@
 
     async function navigate(url) {
       if (!url.startsWith("http")) url = "https://" + url;
-      await initController();
+      const chosen = WISPS.find((w) => w.id === wispSelect.value);
+      let wispUrl = null;
+      if (chosen && chosen.id === "custom") {
+        wispUrl = getSelectedWisp();
+      } else if (chosen && chosen.url) {
+        const status = document.getElementById("wisp-status");
+        if (status) status.textContent = "Checking " + chosen.name + "...";
+        const ok = await probeWisp(chosen.url);
+        wispUrl = ok ? chosen.url : await findWorkingWisp();
+      } else {
+        wispUrl = await findWorkingWisp();
+      }
+      if (!wispUrl) throw new Error("No working Wisp server");
+      await initController(wispUrl);
       await frame.go(url);
       frameWrapper.style.display = "flex";
     }
@@ -436,6 +500,8 @@
         .then(() => navigate(goto))
         .catch((err) => showErrorScreen(err.message, err.stack));
     }
+
+    findWorkingWisp();
   //]]></script>
 </body>
 </html>
