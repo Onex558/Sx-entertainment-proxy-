@@ -1,31 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:hidden">
 <foreignObject id="fo" x="0" y="0" width="100%" height="100%">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-  <title>Sx browser</title>
-  <style>
+  <title>Scramjet</title>
+  <style>/*<![CDATA[*/
     body {
-      font-family: "Segoe UI", system-ui, sans-serif;
+      font-family: "Comic Sans MS", "Comic Neue", cursive;
       margin: 0;
-      background: radial-gradient(1200px 600px at 50% -10%, #3a1d6e 0%, #14081f 45%, #0b0612 100%);
-      color: #f3e9ff;
+      background: #111;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+
     .flex-center {
       display: flex;
       justify-content: center;
       flex-direction: column;
       align-items: center;
     }
+
     .header-center {
       align-items: center;
       flex-direction: column;
       margin-top: 3%;
     }
+
     #sj-frame-wrapper {
       display: none;
       position: fixed;
@@ -35,8 +37,9 @@
       height: 100vh;
       flex-direction: column;
       z-index: 9999;
-      background-color: #0b0612;
+      background-color: #111;
     }
+
     #sj-frame-url {
       position: absolute;
       bottom: 10px;
@@ -54,39 +57,28 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     #sj-frame {
       border: none;
       flex: 1;
       width: 100%;
       height: 100%;
-      background-color: #0b0612;
+      background-color: #111;
     }
-    #sj-error { color: #ff6666; white-space: pre-wrap; }
+
+    #sj-error {
+      color: #ff6666;
+      white-space: pre-wrap;
+    }
+
     #sj-error-code {
       font-size: 12px;
       color: #fff;
       font-family: "Courier New", Courier, monospace;
     }
-    .logo-wrapper h1 {
-      color: #fff;
-      letter-spacing: 0.18em;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin: 0;
-      text-shadow: 0 0 24px rgba(168, 85, 247, 0.7);
-    }
-    .logo-wrapper .mark {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, #c084fc, #7c3aed 55%, #4c1d95);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.45);
-      margin-bottom: 10px;
-    }
+
+    .logo-wrapper h1 { color: white; }
+
     footer {
       margin: 0 5vw;
       margin-top: auto;
@@ -95,6 +87,7 @@
       line-height: 30px;
       margin-bottom: 20px;
     }
+
     footer > div {
       display: flex;
       justify-content: left;
@@ -102,100 +95,87 @@
       flex-wrap: wrap;
       margin-bottom: 15px;
     }
+
     footer a, footer span {
       margin: 0 15px;
       text-decoration: none;
       color: #fff;
       font-size: 15px;
     }
+
     footer a { cursor: pointer; }
     footer a:hover { text-decoration: underline; }
+
     .left-margin { margin-top: 10px; }
+
     .desc p {
       width: 560px;
-      max-width: 90vw;
-      color: rgba(243, 233, 255, 0.62);
+      color: rgba(253, 253, 253, 0.514);
       text-align: center;
     }
-    #sj-address, #username, #wisp-select, #custom-wisp {
+
+    #sj-address, #username {
+      background: none;
       font-family: inherit;
       padding: 0px 17px;
       height: 48px;
-      border: 1px solid rgba(192, 132, 252, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 50px;
       color: #fff;
       outline: none;
       width: 350px;
-      max-width: 90vw;
       margin-top: 5px;
-      transition: border-radius 0.1s, border-color 0.15s, box-shadow 0.15s;
-      box-sizing: border-box;
-      background: rgba(40, 16, 72, 0.55);
+      transition: border-radius 0.1s;
     }
-    #sj-address:focus, #username:focus, #wisp-select:focus, #custom-wisp:focus {
-      border: 1px solid #c084fc;
+
+    #sj-address:focus, #username:focus {
+      border: 1px solid rgba(253, 253, 253, 0.514);
       border-radius: 6px;
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
     }
-    #wisp-select {
-      appearance: none;
-      -webkit-appearance: none;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
-    }
-    #wisp-select option, #wisp-select optgroup { background: #1a0b2e; color: #fff; }
-    #custom-wisp { display: none; }
+
     button[type="submit"], #open-new-tab {
       margin-top: 8px;
       padding: 10px 24px;
-      background: linear-gradient(180deg, #a855f7, #6d28d9);
+      background: #555;
       color: #fff;
       border: none;
       border-radius: 50px;
       cursor: pointer;
       font-family: inherit;
       font-size: 15px;
-      box-shadow: 0 8px 20px rgba(109, 40, 217, 0.35);
     }
-    button[type="submit"]:hover, #open-new-tab:hover { background: linear-gradient(180deg, #c084fc, #7c3aed); }
-    button[type="submit"]:active, #open-new-tab:active { background: #5b21b6; }
-    #wisp-status {
-      margin-top: 8px;
-      font-size: 13px;
-      color: #d8b4fe;
-      text-align: center;
-      min-height: 18px;
-    }
-  </style>
+
+    button[type="submit"]:hover, #open-new-tab:hover { background: #444; }
+    button[type="submit"]:active, #open-new-tab:active { background: #333; }
+  /*]]>*/</style>
 </head>
 <body>
 
   <div class="flex-center logo-wrapper header-center">
-    <div class="mark">Sx</div>
-    <h1>Sx browser</h1>
+    <h1>Scramjet | MW</h1>
   </div>
 
   <div class="flex-center desc left-margin">
     <p>
-      Sx browser runs Scramjet, an interception proxy that loads sites through the Wisp server you pick.
+      Scramjet is an experimental interception based web proxy designed to
+      bypass arbitrary web browser restrictions and innovate web proxy technologies.
     </p>
   </div>
 
   <form id="sj-form" class="flex-center">
     <input id="sj-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
-    <input id="username" type="text" placeholder="Enter Username... (required!)" aria-label="Used for tracking purposes." />
-    <select id="wisp-select" aria-label="Select Wisp server"></select>
-    <p id="wisp-status">Looking for a working Wisp...</p>
-    <input id="custom-wisp" type="text" placeholder="wss://your-server/wisp/" spellcheck="false" autocomplete="off" />
+    <input
+      id="username"
+      type="text"
+      placeholder="Enter Username... (required!)"
+      aria-label="Used for tracking purposes."
+    />
     <input id="sj-address" type="text" placeholder="Search or enter URL" />
     <button type="submit">Open Here</button>
   </form>
 
   <div class="flex-center desc left-margin">
-    <button id="open-new-tab" type="button" onclick="newTab()">Open in New Tab</button>
+    <button id="open-new-tab" onclick="newTab()">Open in New Tab</button>
   </div>
 
   <div class="desc left-margin">
@@ -209,7 +189,7 @@
       <a href="https://github.com/MercuryWorkshop/Scramjet-Demo">GitHub</a>
     </div>
     <div>
-      <span>Sx browser</span>
+      <span>Scramjet &#169; MW 2025</span>
     </div>
   </footer>
 
@@ -225,129 +205,8 @@
     "use strict";
 
     const BASE_PATH = location.pathname.replace(/\/[^\/]*$/, "/");
+
     const swAllowedHostnames = ["localhost", "127.0.0.1"];
-
-    const WISPS = [
-      { id: "bestspark", name: "bestspark.org", url: "wss://bestspark.org/wisp/", group: "Checked up" },
-      { id: "mercury", name: "Mercury Workshop", url: "wss://wisp.mercurywork.shop/", group: "Checked up" },
-      { id: "mercury-wisp", name: "Mercury /wisp/", url: "wss://wisp.mercurywork.shop/wisp/", group: "Checked up" },
-      { id: "anura", name: "Anura /wisp/", url: "wss://anura.pro/wisp/", group: "Checked up" },
-      { id: "anura-root", name: "Anura root", url: "wss://anura.pro/", group: "Checked up" },
-      { id: "space", name: "Go Into Space", url: "wss://gointospace.app/wisp/", group: "Checked up" },
-      { id: "q13x", name: "q13x", url: "wss://wisp.q13x.com/", group: "Checked up" },
-      { id: "terbium", name: "Terbium", url: "wss://terbiumon.top/wisp/", group: "Checked up" },
-      { id: "phantom", name: "Phantom", url: "wss://phantom.lol/wisp/", group: "Checked up" },
-      { id: "truffled", name: "Truffled", url: "wss://truffled.lol/wisp/", group: "Checked up" },
-      { id: "petezah", name: "PeteZah", url: "wss://petezahgames.com/wisp/", group: "Checked up" },
-      { id: "petezah-2", name: "PeteZah ritebooks", url: "wss://3658729.ritebooks.com/wisp/", group: "Checked up" },
-      { id: "petezah-3", name: "Science Park", url: "wss://sciencepark.cc/wisp/", group: "Checked up" },
-      { id: "petezah-4", name: "Homework Help", url: "wss://homeworkhelp.cc/wisp/", group: "Checked up" },
-      { id: "pgis-main", name: "PGIS Main", url: "wss://pgis-wisp.joytree.site/", group: "Checked up" },
-      { id: "tomp", name: "TOMP Bare", url: "wss://bare-server.fly.dev/wisp/", group: "Checked up" },
-      { id: "pgis-1", name: "PGIS Frankfurt", url: "wss://pgis-wisp.onrender.com/", group: "Extra" },
-      { id: "pgis-2", name: "PGIS Ohio", url: "wss://pgis-wisp-2.onrender.com/", group: "Extra" },
-      { id: "pgis-3", name: "PGIS Singapore", url: "wss://pgis-wisp-3.onrender.com/", group: "Extra" },
-      { id: "pgis-4", name: "PGIS Oregon", url: "wss://pgis-wisp-4.onrender.com/", group: "Extra" },
-      { id: "local", name: "Same-origin /wisp/", url: (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/wisp/", group: "Local" },
-      { id: "custom", name: "Custom", url: "", group: "Custom" }
-    ];
-
-    const wispSelect = document.getElementById("wisp-select");
-    const customWisp = document.getElementById("custom-wisp");
-
-    (function fillWispSelect() {
-      const groups = [];
-      WISPS.forEach((w) => {
-        if (!groups.includes(w.group)) groups.push(w.group);
-      });
-      groups.forEach((g) => {
-        const og = document.createElement("optgroup");
-        og.label = g;
-        WISPS.filter((w) => w.group === g).forEach((w) => {
-          const opt = document.createElement("option");
-          opt.value = w.id;
-          opt.textContent = w.name;
-          og.appendChild(opt);
-        });
-        wispSelect.appendChild(og);
-      });
-    })();
-
-    const savedId = localStorage.getItem("sj-wisp-id");
-    const savedCustom = localStorage.getItem("sj-wisp-custom") || "";
-    if (savedId && WISPS.some((w) => w.id === savedId)) wispSelect.value = savedId;
-    customWisp.value = savedCustom;
-    if (wispSelect.value === "custom") customWisp.style.display = "block";
-
-    wispSelect.addEventListener("change", () => {
-      customWisp.style.display = wispSelect.value === "custom" ? "block" : "none";
-      localStorage.setItem("sj-wisp-id", wispSelect.value);
-      if (wispSelect.value === "custom") customWisp.focus();
-    });
-    customWisp.addEventListener("change", () => {
-      localStorage.setItem("sj-wisp-custom", customWisp.value.trim());
-    });
-
-    function probeWisp(url) {
-      return new Promise((resolve) => {
-        let done = false;
-        let ws;
-        const finish = (ok) => {
-          if (done) return;
-          done = true;
-          try { ws.close(); } catch (e) {}
-          resolve(ok);
-        };
-        try {
-          ws = new WebSocket(url);
-        } catch (e) {
-          resolve(false);
-          return;
-        }
-        const timer = setTimeout(() => finish(false), 4000);
-        ws.onopen = () => { clearTimeout(timer); finish(true); };
-        ws.onerror = () => { clearTimeout(timer); finish(false); };
-        ws.onclose = () => { clearTimeout(timer); finish(false); };
-      });
-    }
-
-    async function findWorkingWisp() {
-      const status = document.getElementById("wisp-status");
-      const candidates = WISPS.filter((w) => w.id !== "custom" && w.url);
-      for (let i = 0; i < candidates.length; i++) {
-        const w = candidates[i];
-        wispSelect.value = w.id;
-        if (status) status.textContent = "Trying " + (i + 1) + "/" + candidates.length + " — " + w.name;
-        const ok = await probeWisp(w.url);
-        const opt = wispSelect.querySelector('option[value="' + w.id + '"]');
-        if (opt) opt.textContent = w.name + (ok ? " (up)" : " (down)");
-        if (ok) {
-          localStorage.setItem("sj-wisp-id", w.id);
-          if (status) status.textContent = "Using " + w.name;
-          return w.url;
-        }
-      }
-      if (status) status.textContent = "No Wisp connected. Pick Custom or try again.";
-      return null;
-    }
-
-    function getSelectedWisp() {
-      const entry = WISPS.find((w) => w.id === wispSelect.value);
-      if (!entry) return null;
-      if (entry.id === "custom") {
-        const val = customWisp.value.trim();
-        if (!val) { alert("Enter a custom Wisp URL."); return null; }
-        if (!val.startsWith("ws://") && !val.startsWith("wss://")) {
-          alert("Wisp URL must start with ws:// or wss://");
-          return null;
-        }
-        localStorage.setItem("sj-wisp-custom", val);
-        localStorage.setItem("sj-wisp-id", "custom");
-        return val;
-      }
-      localStorage.setItem("sj-wisp-id", entry.id);
-      return entry.url;
-    }
 
     function search(input, template) {
       try { return new URL(input).toString(); } catch (err) {}
@@ -384,6 +243,7 @@
     const searchEngine = document.getElementById("sj-search-engine");
     const frameWrapper = document.getElementById("sj-frame-wrapper");
     const frameElement = document.getElementById("sj-frame");
+    const frameUrl = document.getElementById("sj-frame-url");
     const error = document.getElementById("sj-error");
     const errorCode = document.getElementById("sj-error-code");
     const username = document.getElementById("username");
@@ -405,12 +265,9 @@
     let controller = null;
     let frame = null;
 
-    async function initController(forcedUrl) {
+    async function initController() {
       controller = null;
       frame = null;
-
-      const wispUrl = forcedUrl || getSelectedWisp();
-      if (!wispUrl) throw new Error("No Wisp server selected");
 
       const { Controller, config } = window.$scramjetController;
 
@@ -420,7 +277,7 @@
       config.prefix = BASE_PATH + "~sj/";
 
       const transport = new window.LibcurlTransport.LibcurlClient({
-        wisp: wispUrl,
+        wisp: "wss://coding-academy.ashcobe.com/api/",
       });
 
       controller = new Controller({
@@ -435,31 +292,17 @@
 
     async function navigate(url) {
       if (!url.startsWith("http")) url = "https://" + url;
-      const chosen = WISPS.find((w) => w.id === wispSelect.value);
-      let wispUrl = null;
-      if (chosen && chosen.id === "custom") {
-        wispUrl = getSelectedWisp();
-      } else if (chosen && chosen.url) {
-        const status = document.getElementById("wisp-status");
-        if (status) status.textContent = "Checking " + chosen.name + "...";
-        const ok = await probeWisp(chosen.url);
-        wispUrl = ok ? chosen.url : await findWorkingWisp();
-      } else {
-        wispUrl = await findWorkingWisp();
-      }
-      if (!wispUrl) throw new Error("No working Wisp server");
-      await initController(wispUrl);
+      if (!frame) await initController();
       await frame.go(url);
       frameWrapper.style.display = "flex";
     }
 
-    function newTab() {
+    async function newTab() {
       if (username.value == "") { alert("Must enter a username, sorry!"); return; }
       if (address.value == "") { alert("Please type your search/URL into the space below the username field."); return; }
       const url = search(address.value, searchEngine.value);
       window.open(url, "_blank");
     }
-    window.newTab = newTab;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -505,8 +348,6 @@
         .then(() => navigate(goto))
         .catch((err) => showErrorScreen(err.message, err.stack));
     }
-
-    findWorkingWisp();
   //]]></script>
 </body>
 </html>
